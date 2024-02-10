@@ -1,0 +1,33 @@
+.list {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.list li:hover {
+    color: #DD6B21;
+    transition: 0.5s ease color;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1000px) {
+    .list {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 855px) {
+    .list {
+        font-size: 12px;
+        gap: 5px;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .list {
+        display: none;
+    }
+}
+

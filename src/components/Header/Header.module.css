@@ -1,0 +1,34 @@
+.header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h3 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #DD6B21;
+    margin-left: 50px;
+    margin-top: 5px;
+}
+
+.switcher {
+    justify-self: flex-end;
+    margin-right: 10px;
+    margin-left: 50px;
+}
+
+@media screen and (max-width: 1000px) {
+    .header h3 {
+        font-size: 20px;
+        font-weight: 700;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .header h3 {
+        font-size: 16px;
+        margin-left: 20px;
+    }
+}
