@@ -28,7 +28,7 @@ return ( <div className={styles.cardContainer}>
     />
     </div>
     <Stack className={styles.descriptionContainer}>
-      <Heading className={styles.cardHeader}>{name}</Heading>
+      <h2 className={styles.cardHeader}>{name}</h2>
       <Text className={styles.cardText}>
         {description}
       </Text>
