@@ -78,5 +78,9 @@
     .cardBody {
         padding: 10px;
     }
+
+    .card:hover{
+        scale: 1;
+    }
 }
 
