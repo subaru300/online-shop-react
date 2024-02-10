@@ -23,7 +23,7 @@ const SideFilter: React.FC<SideFilterProps> = ({ onChoseBrand }) => {
         onChoseBrand(title);
     };
 
-    return <Box>
+    return <Box className={styles.sideMenuContainer}>
         <h3 className={styles.header}>Catalogue</h3>
         <Box className={styles.btnsContainer}>
             {buttons.map((btn, index) => {

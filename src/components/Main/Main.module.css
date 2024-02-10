@@ -2,6 +2,7 @@
     display: flex;
     height: 85vh;
     overflow: scroll;
+   
 }
 
 .menu {
@@ -45,7 +46,11 @@
 @media screen and (max-width: 500px) {
     .container {
         display: flex;
-       flex-direction: column;
+        flex-direction: column;
+        align-items: center;
+    }
+    .page {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 

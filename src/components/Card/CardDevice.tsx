@@ -18,7 +18,7 @@ const CardDevice = ({ name, imageLink, description, price, id, quantity }: Devic
 return ( <div className={styles.cardContainer}>
   {isOpen && <BuyNowModal isOpen={isOpen} onClose={onClose}/>}
 <Card boxShadow='xs' maxW='sm' className={styles.card}>
-  <CardBody>
+  <CardBody className={styles.cardBody}>
     <div className={styles.imgContainer}>
     <Image
       className={styles.image}
@@ -27,9 +27,9 @@ return ( <div className={styles.cardContainer}>
       borderRadius='md'
     />
     </div>
-    <Stack mt='6' spacing='3'>
-      <Heading size='md'>{name}</Heading>
-      <Text>
+    <Stack className={styles.descriptionContainer}>
+      <Heading className={styles.cardHeader}>{name}</Heading>
+      <Text className={styles.cardText}>
         {description}
       </Text>
       <Text color='blue.600' fontSize='2xl' className={styles.price}>
@@ -39,7 +39,7 @@ return ( <div className={styles.cardContainer}>
   </CardBody>
   <Divider />
   <CardFooter>
-    <ButtonGroup spacing='2'>
+    <ButtonGroup spacing='2' className={styles.btnsContainer}>
       <Button variant='solid' colorScheme='blue' onClick={() => onBuyNowHandler(name)}>
         Buy now
       </Button>
