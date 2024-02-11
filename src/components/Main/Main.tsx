@@ -10,7 +10,7 @@ import styles from './Main.module.css';
 
 const Main = () => {
     const [devices, setDevices] = useState<Device[]>([]);
-    const [chosenBrand, setChosenBrand] = useState<string>('Apple');
+    const [chosenBrand, setChosenBrand] = useState<string>('All');
     const { cartItems } = useContext(CartContext);
     const toast = useToast();
 
@@ -18,9 +18,12 @@ const Main = () => {
         const fetchData = async () => {
             try {
                 const devicesData = await devicesFetch();
-                const filteredDevices = devicesData.filter((device) => device.name.split(' ')[0] === chosenBrand)
-                setDevices(filteredDevices);
-                
+                if (chosenBrand === 'All') {
+                    setDevices(devicesData);
+                } else {
+                    const filteredDevices = devicesData.filter((device) => device.name.split(' ')[0] === chosenBrand)
+                    setDevices(filteredDevices);
+                }
             } catch (error) {
                 console.error(error);
             }

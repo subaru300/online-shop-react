@@ -5,6 +5,9 @@ import { SideFilterProps } from '../../interfaces/interfaces';
 
 const buttons = [
     {
+        title: 'All',
+    },
+    {
         title: 'Apple',
     },
     {
@@ -16,7 +19,7 @@ const buttons = [
 ];
 
 const SideFilter: React.FC<SideFilterProps> = ({ onChoseBrand }) => {
-    const [activeBtnTitle, setActiveBtnTitle] = useState('Apple');
+    const [activeBtnTitle, setActiveBtnTitle] = useState('All');
 
     const onClickHandler = (title: string) => {
         setActiveBtnTitle(title);

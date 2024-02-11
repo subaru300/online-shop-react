@@ -1,0 +1,11 @@
+.footerContainer {
+    display: flex;
+    flex-direction: column;
+    grid-area: 10px;
+    margin: 20px;
+    align-items: center;
+}
+
+.tel {
+    font-size: 18px;
+}

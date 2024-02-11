@@ -1,7 +1,7 @@
 export interface Device {
     name: string;
     imageLink: string;
-    description: string;
+    description: string[];
     price: number;
     id: string;
     quantity: number;

@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, Divider, Heading, Image, Stack, Text, useDisclosure, Card, CardBody, CardFooter } from '@chakra-ui/react';
+import { Button, ButtonGroup, Divider, Image, Stack, Text, useDisclosure, Card, CardBody, CardFooter } from '@chakra-ui/react';
 import { Device } from "../../interfaces/interfaces";
 import { useContext } from 'react';
 import { CartContext } from '../cart/CartContext';
@@ -29,21 +29,24 @@ return ( <div className={styles.cardContainer}>
     </div>
     <Stack className={styles.descriptionContainer}>
       <h2 className={styles.cardHeader}>{name}</h2>
-      <Text className={styles.cardText}>
-        {description}
-      </Text>
-      <Text color='blue.600' fontSize='2xl' className={styles.price}>
+      <div className={styles.specifications}>
+        <h3>Technical specifications</h3>
+        <p><span>OS:</span> {description[0]}</p>
+        <p><span>Chipset:</span> {description[1]}</p>
+        <p><span>Display:</span> {description[2]}</p>
+      </div>
+      <Text color='blue.600' className={styles.price}>
         ${price}
       </Text>
     </Stack>
   </CardBody>
   <Divider />
   <CardFooter>
-    <ButtonGroup spacing='2' className={styles.btnsContainer}>
+    <ButtonGroup className={styles.btnsContainer}>
       <Button variant='solid' colorScheme='blue' onClick={() => onBuyNowHandler(name)}>
         Buy now
       </Button>
-      <Button variant='ghost' colorScheme='blue' onClick={() => addToCart({ name, imageLink, description, price, id, quantity })}>
+      <Button className={styles.addBtn} variant='ghost' colorScheme='blue' onClick={() => addToCart({ name, imageLink, description, price, id, quantity })}>
         Add to cart
       </Button>
     </ButtonGroup>
