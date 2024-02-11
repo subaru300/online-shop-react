@@ -98,6 +98,12 @@
     .descriptionContainer {
         gap: 5px;
         margin-top: 0;
+        max-height: 200px;
+        overflow: scroll;
+    }
+
+    .descriptionContainer::-webkit-scrollbar { 
+        width: 0; 
     }
 
     .cardHeader {
