@@ -1,11 +1,12 @@
 import { Button, ButtonGroup, Divider, Image, Stack, Text, useDisclosure, Card, CardBody, CardFooter } from '@chakra-ui/react';
-import { Device } from "../../interfaces/interfaces";
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { CartContext } from '../cart/CartContext';
 import BuyNowModal from '../BuyNowModal/BuyNowModal';
+import { LoadedDevice } from '../../interfaces/interfaces';
 import styles from './CardDevice.module.css';
 
-const CardDevice = ({ name, imageLink, description, price, id, quantity }: Device) => {
+const CardDevice = ({ name, imageLink, description, price, id, quantity }: LoadedDevice) => {
+  const [selectedDevice, setSelectedDevice] = useState('');
   const { addToCart } = useContext(CartContext);
 
   // open Buy Now dialog
@@ -13,10 +14,14 @@ const CardDevice = ({ name, imageLink, description, price, id, quantity }: Devic
 
   const onBuyNowHandler = (name: string) => {
     onOpen();
+    setSelectedDevice(name);
 };
 
 return ( <div className={styles.cardContainer}>
-  {isOpen && <BuyNowModal isOpen={isOpen} onClose={onClose}/>}
+  {isOpen && <BuyNowModal 
+                isOpen={isOpen} 
+                onClose={onClose} 
+                productName={selectedDevice}/>}
 <Card boxShadow='xs' maxW='sm' className={styles.card}>
   <CardBody className={styles.cardBody}>
     <div className={styles.imgContainer}>
@@ -31,9 +36,9 @@ return ( <div className={styles.cardContainer}>
       <h2 className={styles.cardHeader}>{name}</h2>
       <div className={styles.specifications}>
         <h3>Technical specifications</h3>
-        <p><span>OS:</span> {description[0]}</p>
-        <p><span>Chipset:</span> {description[1]}</p>
-        <p><span>Display:</span> {description[2]}</p>
+        <p><span>OS:</span> {description.split(',')[0]}</p>
+        <p><span>Chipset:</span> {description.split(',')[1]}</p>
+        <p><span>Display:</span> {description.split(',')[2]}</p>
       </div>
       <Text color='blue.600' className={styles.price}>
         ${price}

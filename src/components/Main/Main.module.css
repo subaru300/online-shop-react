@@ -7,15 +7,17 @@
 
 .menu {
     flex: 1;
+    min-width: 180px;
+    max-width: 180px;
 }
 
 .page {
     flex: 5;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     margin: 30px;
     position: relative;
-  
+    gap: 10px;
 }
 
 

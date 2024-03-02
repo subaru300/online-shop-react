@@ -1,15 +1,15 @@
-export interface Device {
+export interface LoadedDevice {
     name: string;
     imageLink: string;
-    description: string[];
+    description: string;
     price: number;
     id: string;
     quantity: number;
 }
 
 export interface CartContextType {
-    cartItems: Device[];
-    addToCart: (item: Device) => void;
+    cartItems: LoadedDevice[];
+    addToCart: (item: LoadedDevice) => void;
     removeFromCart: (idToRemove: string) => void;
     isOpen: boolean;
     onOpen: () => void;
@@ -21,8 +21,17 @@ export interface CartContextType {
 export interface BuyNowDialog {
     isOpen:  boolean;
     onClose: () => void;
+    productName: string;
   }
 
 export interface SideFilterProps {
     onChoseBrand: (title: string) => void;
+}
+
+export interface UserData {
+    productName: string;
+    userName?: string;
+    userPhone?: string;
+    email?: string;
+    address?: string;
 }

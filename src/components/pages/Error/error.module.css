@@ -1,0 +1,21 @@
+.errorContainer {
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+
+}
+
+.errorImage {
+    width: 100%;
+    margin: 100px auto;
+}
+
+.homeLink {
+    font-size: 24px;
+    color: #DD6B21;
+    margin-top: 30px;
+}

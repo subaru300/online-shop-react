@@ -1,7 +1,7 @@
-import { Device } from "../../interfaces/interfaces";
 import CardDevice from "../Card/CardDevice";
+import { LoadedDevice } from "../../interfaces/interfaces";
 
-const DeviceList = ({ devices }: { devices: Device[] }) => {
+const DeviceList = ({ devices }: { devices: LoadedDevice[] }) => {
 
     return ( <>
         {devices.map((device) => {

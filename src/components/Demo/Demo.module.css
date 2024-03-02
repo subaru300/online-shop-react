@@ -1,0 +1,43 @@
+.demoContainer{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.textContainer {
+    margin: 30px;
+    text-align: center;
+}
+
+.textContainer h2 {
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.textContainer p {
+ font-size: 20px;
+ margin-bottom: 20px;
+}
+
+.demoLink {
+    color: #DD6B21;
+}
+
+.demoLink:hover {
+    text-decoration: underline;
+}
+
+
+.imageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.image {
+    width: 50%;
+    object-fit: cover;
+}

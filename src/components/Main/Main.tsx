@@ -1,35 +1,43 @@
 import { useContext, useEffect, useState } from "react";
 import { Box, Divider, useToast } from "@chakra-ui/react";
-import { Device } from "../../interfaces/interfaces";
-import { devicesFetch } from "../../store/devices";
 import { CartContext } from "../cart/CartContext";
 import SpinnerComp from "../Spinner/SpinnerComp";
 import DeviceList from "../DeviceList/DeviceList";
 import SideFilter from "../SideFilter/SideFilter";
+import { LoadedDevice } from "../../interfaces/interfaces"; 
+import fetchData from "../../api/fetchData";
 import styles from './Main.module.css';
 
 const Main = () => {
-    const [devices, setDevices] = useState<Device[]>([]);
+    const [loadedDevices, setLoadedDevices] = useState<LoadedDevice[]>([]);
     const [chosenBrand, setChosenBrand] = useState<string>('All');
     const { cartItems } = useContext(CartContext);
     const toast = useToast();
-
+    
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const devicesData = await devicesFetch();
-                if (chosenBrand === 'All') {
-                    setDevices(devicesData);
-                } else {
-                    const filteredDevices = devicesData.filter((device) => device.name.split(' ')[0] === chosenBrand)
-                    setDevices(filteredDevices);
-                }
-            } catch (error) {
-                console.error(error);
-            }
-        };
-        fetchData();
-    }, [chosenBrand]);
+        const loadData = async () => {
+            const devicesData = await fetchData();
+            setLoadedDevices(devicesData);
+        }
+        loadData();
+    }, []);
+
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             const devicesData = await devicesFetch();
+    //             if (chosenBrand === 'All') {
+    //                 setDevices(devicesData);
+    //             } else {
+    //                 const filteredDevices = devicesData.filter((device) => device.name.split(' ')[0] === chosenBrand)
+    //                 setDevices(filteredDevices);
+    //             }
+    //         } catch (error) {
+    //             console.error(error);
+    //         }
+    //     };
+    //     fetchData();
+    // }, [chosenBrand]);
 
     useEffect(() => {
         if (cartItems.length === 0) return;
@@ -47,12 +55,12 @@ const Main = () => {
                 <SideFilter onChoseBrand={setChosenBrand}/>
             </Box>
             <Divider orientation="vertical"/>
-            {devices.length === 0
+            {loadedDevices.length === 0
                 ?   <Box className={styles.page}>
                         <SpinnerComp/>
                     </Box> 
                 :   <Box className={styles.page}>
-                        <DeviceList devices={devices}/>
+                        <DeviceList devices={loadedDevices}/>
                     </Box>}
         </Box>
     )
