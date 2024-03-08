@@ -13,6 +13,10 @@
     margin-top: 5px;
 }
 
+.logo{
+    margin: 5px 0;
+}
+
 .switcher {
     justify-self: flex-end;
     margin-right: 10px;
@@ -30,5 +34,21 @@
     .header h3 {
         font-size: 16px;
         margin-left: 20px;
+    }
+
+    .logo{
+        width: 80%;
+        margin: 10px 0;
+    }
+
+    .cartAndSwitchContainer {
+        display: flex;
+        align-items: center;
+    }
+
+    .switcher {
+        justify-self: flex-end;
+        margin-right: 10px;
+        margin-left: 10px;
     }
 }

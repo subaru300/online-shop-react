@@ -7,6 +7,7 @@ import CartButton from '../CartButton/CartButton';
 import CartModal from '../CartModal/CartModal';
 import styles from './Header.module.css';
 import { Link } from 'react-router-dom';
+import logo from '../../images/logo.png';
 
 const Header = () => {
     const { onOpen } = useContext(CartContext);
@@ -14,9 +15,9 @@ const Header = () => {
     return (<>
         <CartModal />
         <Box className={styles.header}>
-            <Link to='/home'> <h3>Apple Device Shop</h3></Link>
+            <Link to='/online-shop-react'> <img src={logo} className={styles.logo}/></Link>
             <Menu/>
-            <div>
+            <div className={styles.cartAndSwitchContainer}>
                 <CartButton onClick={() => onOpen()}/>
                 <ColorModeSwitcher className={styles.switcher}/>
             </div>

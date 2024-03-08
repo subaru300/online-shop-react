@@ -6,7 +6,7 @@ import HomePage from './Home/HomePage';
 
 const RouterView = () => {
     return <Routes>
-        <Route path='/home' element={<HomePage/>}/>
+        <Route path='/online-shop-react' element={<HomePage/>}/>
         <Route path='/catalogue' element={<Main/>}/>
         <Route path='*' element={<ErrorPage/>}/>
     </Routes>

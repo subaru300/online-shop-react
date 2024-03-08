@@ -1,0 +1,24 @@
+.header {
+    text-align: center;
+    margin: 15px 0;
+    font-size: 18px;
+}
+
+.filterCard {
+    margin: 0 10px 30px 5px;
+    padding: 10px;
+    min-height: 195px;
+    max-height: 195px;
+ }
+
+ .wrapper {
+    max-height: 175px;
+    min-height: 175px;
+    overflow: scroll;
+ }
+ 
+ .checkbox {
+     font-size: 12px;
+ }
+ 
+ 

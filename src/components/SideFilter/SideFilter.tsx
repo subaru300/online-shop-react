@@ -1,40 +1,40 @@
-import { Box, Button } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import { useState } from 'react';
-import styles from './SideFilter.module.css';
 import { SideFilterProps } from '../../interfaces/interfaces';
+import FilterByCategory from '../FilterByCategory/FilterByCategory';
+import FilterByModel from '../FilterByModel/FilterByModel';
+import styles from './SideFilter.module.css';
 
-const buttons = [
-    {
-        title: 'All',
-    },
-    {
-        title: 'Apple',
-    },
-    {
-        title: 'Samsung',
-    },
-    {
-        title: 'Xiaomi',
-    },
-];
-
-const SideFilter: React.FC<SideFilterProps> = ({ onChoseBrand }) => {
+const SideFilter: React.FC<SideFilterProps> = ({ onChoseCategory, chosenCategory, loadedDevices, filterByCategory, filteredByCategory, onModelChangeHandler }) => {
     const [activeBtnTitle, setActiveBtnTitle] = useState('All');
+    const [selectedModels, setSelectedModels] = useState<string[]>([]);
 
     const onClickHandler = (title: string) => {
+        filterByCategory(title, loadedDevices);
+
+        setSelectedModels([]);
+        
+        const categoryCheck = (title: string) => {
+            if(title === 'All') return title;
+            else return title.split(' ')[1];
+        }
+        const checkedCategory = categoryCheck(title);
+        
         setActiveBtnTitle(title);
-        onChoseBrand(title);
+        onChoseCategory(checkedCategory);
     };
 
     return <Box className={styles.sideMenuContainer}>
-        <h3 className={styles.header}>Catalogue</h3>
-        <Box className={styles.btnsContainer}>
-            {buttons.map((btn, index) => {
-                return <Button key={index} onClick={() => onClickHandler(btn.title)} isActive={activeBtnTitle === btn.title}>{btn.title}</Button>
-            })
-            }
-        </Box>
-    </Box>
+            <FilterByCategory
+                onClickHandler={onClickHandler}
+                activeBtnTitle={activeBtnTitle}/>
+            {chosenCategory !== 'All' && 
+            <FilterByModel 
+                filteredByCategory={filteredByCategory}
+                onModelChangeHandler={onModelChangeHandler}
+                selectedModels={selectedModels}
+                setSelectedModels={setSelectedModels}/>}
+            </Box>
 };
 
 export default SideFilter;

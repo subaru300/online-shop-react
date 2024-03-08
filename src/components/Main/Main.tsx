@@ -10,34 +10,64 @@ import styles from './Main.module.css';
 
 const Main = () => {
     const [loadedDevices, setLoadedDevices] = useState<LoadedDevice[]>([]);
-    const [chosenBrand, setChosenBrand] = useState<string>('All');
+    const [filteredByCategory, setFilteredByCategory] = useState<LoadedDevice[]>([]);
+    const [filteredByModel, setFilteredByModel] = useState<LoadedDevice[]>([]);
+    const [finalDevices, setFinalDevices] = useState<LoadedDevice[]>([]);
+
+    const [chosenCategory, setChosenCategory] = useState<string>('All');
+    const [chosenModel, setChosenModel] = useState<string[]>([]);
     const { cartItems } = useContext(CartContext);
     const toast = useToast();
     
+
     useEffect(() => {
         const loadData = async () => {
-            const devicesData = await fetchData();
-            setLoadedDevices(devicesData);
-        }
+            try {
+                const devicesData = await fetchData();
+                setLoadedDevices(devicesData);
+                filterByCategory('All', devicesData);
+            } catch (error) {
+                console.error(error);
+            }
+        };
         loadData();
     }, []);
 
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         try {
-    //             const devicesData = await devicesFetch();
-    //             if (chosenBrand === 'All') {
-    //                 setDevices(devicesData);
-    //             } else {
-    //                 const filteredDevices = devicesData.filter((device) => device.name.split(' ')[0] === chosenBrand)
-    //                 setDevices(filteredDevices);
-    //             }
-    //         } catch (error) {
-    //             console.error(error);
-    //         }
-    //     };
-    //     fetchData();
-    // }, [chosenBrand]);
+    useEffect(() => {
+        if(filteredByModel.length === 0) {
+            setFinalDevices(filteredByCategory)
+        } else {
+            setFinalDevices(filteredByModel);
+        }
+    }, [filteredByCategory, filteredByModel, chosenModel])
+
+    const filterByCategory = (category = 'All', devices: LoadedDevice[]) => {
+        if(category  === 'All') {
+            // setFilteredByCategory(devices);
+           
+            setFinalDevices(devices);
+        } else {
+         
+            // setChosenModel([]);
+            const filteredDevices = devices.filter((device) => device.name.split(' ')[1] === category.split(' ')[1]);
+            
+            setFilteredByCategory(filteredDevices);
+        }
+    };
+
+    const filterByModel = (name: string[], devices: LoadedDevice[]) => {
+        if(name.length === 0) {
+            setFilteredByModel([]);
+        } else {
+            const filteredDevices = devices.filter((device) => name.includes(device.name));
+            setFilteredByModel(filteredDevices);
+        }
+    };
+
+    const onModelChangeHandler = (selectedModels: string[]) => {
+        setChosenModel(selectedModels);
+        filterByModel(selectedModels, filteredByCategory);
+    };
 
     useEffect(() => {
         if (cartItems.length === 0) return;
@@ -52,16 +82,24 @@ const Main = () => {
     return (
         <Box className={styles.container}>
             <Box className={styles.menu}>
-                <SideFilter onChoseBrand={setChosenBrand}/>
+                <SideFilter 
+                    onChoseCategory={setChosenCategory} 
+                    chosenCategory={chosenCategory}
+                    loadedDevices={loadedDevices}
+                    filteredByCategory={filteredByCategory}
+                    filterByCategory={filterByCategory}
+                    onModelChangeHandler={onModelChangeHandler}/>
             </Box>
             <Divider orientation="vertical"/>
-            {loadedDevices.length === 0
+
+            {finalDevices.length === 0
                 ?   <Box className={styles.page}>
                         <SpinnerComp/>
                     </Box> 
                 :   <Box className={styles.page}>
-                        <DeviceList devices={loadedDevices}/>
+                        <DeviceList devices={finalDevices}/>
                     </Box>}
+         
         </Box>
     )
 };

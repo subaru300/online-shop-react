@@ -1,24 +1,4 @@
-
-.header {
-    text-align: center;
-    margin: 15px 0;
-    font-size: 24px;
-}
-
-.btnsContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    padding: 5px;
-    
-}
-
-
-
 @media screen and (max-width: 500px) {
-    .header {
-      font-size: 18px;
-    }
     .sideMenuContainer {
         display: flex;
         flex-direction: column;

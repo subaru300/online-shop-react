@@ -6,7 +6,7 @@ const ErrorPage = () => {
   
     return (
       <div className={styles.errorContainer}>
-        <Link to='/home' className={styles.homeLink}>Go to Home Page</Link>
+        <Link to='/online-shop-react' className={styles.homeLink}>Go to Home Page</Link>
         <img src={image} className={styles.errorImage}/>
       </div>
     );

@@ -25,7 +25,12 @@ export interface BuyNowDialog {
   }
 
 export interface SideFilterProps {
-    onChoseBrand: (title: string) => void;
+    onChoseCategory: (title: string) => void;
+    chosenCategory: string;
+    loadedDevices: LoadedDevice[];
+    filterByCategory: (category: string, devices: LoadedDevice[]) => void;
+    filteredByCategory: LoadedDevice[];
+    onModelChangeHandler: (selectedModels: string[]) => void;
 }
 
 export interface UserData {
