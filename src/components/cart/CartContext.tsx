@@ -7,6 +7,7 @@ const CartContext = createContext<CartContextType>({
   cartItems: [],
   addToCart: () => {},
   removeFromCart: () => {},
+  clearCart: () => {},
   isOpen: false,
   onOpen: () => {},
   onClose: () => {},
@@ -38,6 +39,10 @@ const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
       setCartItems(cartItems.filter((item) => item.id !== idToRemove));
     };
 
+    const clearCart = () => {
+      setCartItems([]);
+    };
+
     const onIncrease = (name: string) => {
       setCartItems((prev) => {
         return prev.map((item) => {
@@ -61,7 +66,7 @@ const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     }
 
     return (
-      <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, isOpen, onOpen, onClose, onIncrease, onDecrease }}>
+      <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, clearCart, isOpen, onOpen, onClose, onIncrease, onDecrease }}>
         {children}
       </CartContext.Provider>
     );

@@ -1,0 +1,23 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.bntsContainer {
+    display: flex;
+    justify-content: end;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.errorText {
+    color: rgb(255, 65, 65);
+    margin-bottom: 10px;
+    margin-left: 5px;
+}

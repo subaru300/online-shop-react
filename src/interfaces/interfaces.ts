@@ -11,6 +11,7 @@ export interface CartContextType {
     cartItems: LoadedDevice[];
     addToCart: (item: LoadedDevice) => void;
     removeFromCart: (idToRemove: string) => void;
+    clearCart: () => void;
     isOpen: boolean;
     onOpen: () => void;
     onClose: () => void;
@@ -34,9 +35,9 @@ export interface SideFilterProps {
 }
 
 export interface UserData {
-    productName: string;
-    userName?: string;
-    userPhone?: string;
+    productName: string | LoadedDevice[];
+    enteredUserName?: string;
+    enteredUserPhone?: string;
     email?: string;
     address?: string;
 }
