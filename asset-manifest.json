@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/online-shop-react/static/css/main.4d7b23f2.css",
-    "main.js": "/online-shop-react/static/js/main.aeab0ad1.js",
+    "main.css": "/online-shop-react/static/css/main.63031ef5.css",
+    "main.js": "/online-shop-react/static/js/main.724d5388.js",
     "static/media/watch.png": "/online-shop-react/static/media/watch.d6b340ca108aacb595b0.png",
     "static/media/i15.png": "/online-shop-react/static/media/i15.48cbb7f4f4bcd83c6370.png",
     "static/media/macbook.png": "/online-shop-react/static/media/macbook.4b722af38192019e603c.png",
     "static/media/404.png": "/online-shop-react/static/media/404.18cc99484dab08fcdcb3.png",
     "index.html": "/online-shop-react/index.html",
-    "main.4d7b23f2.css.map": "/online-shop-react/static/css/main.4d7b23f2.css.map",
-    "main.aeab0ad1.js.map": "/online-shop-react/static/js/main.aeab0ad1.js.map"
+    "main.63031ef5.css.map": "/online-shop-react/static/css/main.63031ef5.css.map",
+    "main.724d5388.js.map": "/online-shop-react/static/js/main.724d5388.js.map"
   },
   "entrypoints": [
-    "static/css/main.4d7b23f2.css",
-    "static/js/main.aeab0ad1.js"
+    "static/css/main.63031ef5.css",
+    "static/js/main.724d5388.js"
   ]
 }
