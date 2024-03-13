@@ -9,16 +9,14 @@
     padding: 10px;
     min-height: 195px;
     max-height: 195px;
- }
+}
 
- .wrapper {
+.wrapper {
     max-height: 175px;
     min-height: 175px;
     overflow: scroll;
- }
- 
- .checkbox {
-     font-size: 12px;
- }
- 
- 
+}
+
+.checkbox {
+    font-size: 12px;
+}

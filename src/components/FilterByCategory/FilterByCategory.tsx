@@ -1,4 +1,4 @@
-import { Button, Card } from "@chakra-ui/react";
+import { Button, Card } from '@chakra-ui/react';
 import styles from './FilterByCategory.module.css';
 
 const buttons = [
@@ -22,18 +22,24 @@ interface Props {
 }
 
 const FilterByCategory = ({ onClickHandler, activeBtnTitle }: Props) => {
-    return <div>
-                <h4 className={styles.header}>Category</h4>
-                <Card className={styles.btnsContainer}>
+    return (
+        <div>
+            <h4 className={styles.header}>Category</h4>
+            <Card className={styles.btnsContainer}>
                 {buttons.map((btn, index) => {
-                return <Button 
-                            key={index} 
-                            onClick={() => onClickHandler(btn.title)} 
-                            isActive={activeBtnTitle === btn.title}>{btn.title}</Button>
-            })
-            }
-                </Card>
-    </div>
+                    return (
+                        <Button
+                            key={index}
+                            onClick={() => onClickHandler(btn.title)}
+                            isActive={activeBtnTitle === btn.title}
+                        >
+                            {btn.title}
+                        </Button>
+                    );
+                })}
+            </Card>
+        </div>
+    );
 };
 
 export default FilterByCategory;

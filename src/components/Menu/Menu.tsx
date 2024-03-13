@@ -11,7 +11,7 @@ const Menu = () => {
                 <li>Contacts</li>
             </ul>
         </div>
-    )
+    );
 };
 
 export default Menu;

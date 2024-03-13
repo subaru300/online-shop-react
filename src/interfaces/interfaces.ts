@@ -20,10 +20,10 @@ export interface CartContextType {
 }
 
 export interface BuyNowDialog {
-    isOpen:  boolean;
+    isOpen: boolean;
     onClose: () => void;
     productName: string;
-  }
+}
 
 export interface SideFilterProps {
     onChoseCategory: (title: string) => void;

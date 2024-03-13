@@ -7,7 +7,7 @@
 }
 
 .list li:hover {
-    color: #DD6B21;
+    color: #dd6b21;
     transition: 0.5s ease color;
     cursor: pointer;
 }
@@ -30,4 +30,3 @@
         display: none;
     }
 }
-

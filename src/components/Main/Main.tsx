@@ -1,11 +1,11 @@
-import { useContext, useEffect, useState, useMemo } from "react";
-import { Box, Divider, useToast } from "@chakra-ui/react";
-import { CartContext } from "../cart/CartContext";
-import SpinnerComp from "../Spinner/SpinnerComp";
-import DeviceList from "../DeviceList/DeviceList";
-import SideFilter from "../SideFilter/SideFilter";
-import { LoadedDevice } from "../../interfaces/interfaces"; 
-import fetchData from "../../api/fetchData";
+import { useContext, useEffect, useState, useMemo } from 'react';
+import { Box, Divider, useToast } from '@chakra-ui/react';
+import { CartContext } from '../cart/CartContext';
+import SpinnerComp from '../Spinner/SpinnerComp';
+import DeviceList from '../DeviceList/DeviceList';
+import SideFilter from '../SideFilter/SideFilter';
+import { LoadedDevice } from '../../interfaces/interfaces';
+import fetchData from '../../api/fetchData';
 import styles from './Main.module.css';
 
 const Main = () => {
@@ -21,9 +21,7 @@ const Main = () => {
             return loadedDevices;
         }
 
-        return loadedDevices.filter((device) => (
-            device.name.split(' ')[1] === chosenCategory
-        ));
+        return loadedDevices.filter((device) => device.name.split(' ')[1] === chosenCategory);
     }, [loadedDevices, chosenCategory]);
 
     const filteredByModel = useMemo(() => {
@@ -31,9 +29,7 @@ const Main = () => {
             return filteredByCategory;
         }
 
-        return filteredByCategory.filter((device) => (
-            chosenModels.includes(device.name)
-        ));
+        return filteredByCategory.filter((device) => chosenModels.includes(device.name));
     }, [filteredByCategory, chosenModels]);
 
     let finalDevices = filteredByModel;
@@ -65,31 +61,33 @@ const Main = () => {
             status: 'info',
             duration: 1000,
             isClosable: true,
-          })
-    }, [cartItems])
+        });
+    }, [cartItems]);
 
     return (
         <Box className={styles.container}>
             <Box className={styles.menu}>
-                <SideFilter 
-                    onChoseCategory={setChosenCategory} 
+                <SideFilter
+                    onChoseCategory={setChosenCategory}
                     chosenCategory={chosenCategory}
                     loadedDevices={loadedDevices}
                     filteredByCategory={filteredByCategory}
-                    onModelChangeHandler={onModelChangeHandler}/>
+                    onModelChangeHandler={onModelChangeHandler}
+                />
             </Box>
-            <Divider orientation="vertical"/>
+            <Divider orientation="vertical" />
 
-            {finalDevices.length === 0
-                ?   <Box className={styles.page}>
-                        <SpinnerComp/>
-                    </Box> 
-                :   <Box className={styles.page}>
-                        <DeviceList devices={finalDevices}/>
-                    </Box>}
-
+            {finalDevices.length === 0 ? (
+                <Box className={styles.page}>
+                    <SpinnerComp />
+                </Box>
+            ) : (
+                <Box className={styles.page}>
+                    <DeviceList devices={finalDevices} />
+                </Box>
+            )}
         </Box>
-    )
+    );
 };
 
 export default Main;
