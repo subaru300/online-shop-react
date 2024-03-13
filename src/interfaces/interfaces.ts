@@ -20,16 +20,14 @@ export interface CartContextType {
 }
 
 export interface BuyNowDialog {
-    isOpen:  boolean;
+    isOpen: boolean;
     onClose: () => void;
     productName: string;
-  }
+}
 
 export interface SideFilterProps {
     onChoseCategory: (title: string) => void;
     chosenCategory: string;
-    loadedDevices: LoadedDevice[];
-    filterByCategory: (category: string, devices: LoadedDevice[]) => void;
     filteredByCategory: LoadedDevice[];
     onModelChangeHandler: (selectedModels: string[]) => void;
 }

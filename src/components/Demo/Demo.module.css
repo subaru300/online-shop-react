@@ -1,4 +1,4 @@
-.demoContainer{
+.demoContainer {
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -17,18 +17,17 @@
 }
 
 .textContainer p {
- font-size: 20px;
- margin-bottom: 20px;
+    font-size: 20px;
+    margin-bottom: 20px;
 }
 
 .demoLink {
-    color: #DD6B21;
+    color: #dd6b21;
 }
 
 .demoLink:hover {
     text-decoration: underline;
 }
-
 
 .imageContainer {
     display: flex;

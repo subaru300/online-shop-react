@@ -27,5 +27,5 @@ export const demoProducts = [
         productName: 'Apple MacBook Pro',
         tagline: 'Strength at its finest.',
         image: macbook,
-    }
+    },
 ];

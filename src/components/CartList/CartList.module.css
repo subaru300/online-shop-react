@@ -1,4 +1,3 @@
-
 .cartList {
     max-height: 350px;
     min-height: 350px;
@@ -45,7 +44,6 @@
     align-items: center;
 }
 
-
 @media screen and (max-width: 700px) {
     .cartList {
         padding: 5px;
@@ -61,7 +59,6 @@
 }
 
 @media screen and (max-width: 700px) {
-
     .cartList li {
         list-style: none;
         font-size: 14px;
@@ -71,7 +68,6 @@
         font-weight: bold;
     }
     .itemBtnsGroup {
-       align-items: center;
+        align-items: center;
     }
-   
 }

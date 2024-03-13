@@ -6,7 +6,6 @@
     align-items: center;
     justify-content: center;
     margin: 0;
-
 }
 
 .errorImage {
@@ -16,6 +15,6 @@
 
 .homeLink {
     font-size: 24px;
-    color: #DD6B21;
+    color: #dd6b21;
     margin-top: 30px;
 }

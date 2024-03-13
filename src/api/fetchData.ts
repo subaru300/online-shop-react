@@ -1,9 +1,9 @@
-import { LoadedDevice } from "../interfaces/interfaces";
+import { LoadedDevice } from '../interfaces/interfaces';
 
 const fetchData = async (): Promise<LoadedDevice[]> => {
     try {
         const response = await fetch('https://deviceshopdemo-default-rtdb.firebaseio.com/devices.json');
-        
+
         if (!response.ok) {
             throw new Error('Something went wrong');
         }
@@ -11,7 +11,7 @@ const fetchData = async (): Promise<LoadedDevice[]> => {
         const data = await response.json();
 
         const loadedDevices: LoadedDevice[] = [];
-        for (let key in data) {
+        for (const key in data) {
             loadedDevices.push({
                 name: data[key].name,
                 imageLink: data[key].imageLink,
@@ -22,7 +22,6 @@ const fetchData = async (): Promise<LoadedDevice[]> => {
             });
         }
         return loadedDevices;
-
     } catch (error) {
         console.error(error);
         return [];

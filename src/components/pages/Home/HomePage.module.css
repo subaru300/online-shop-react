@@ -8,11 +8,9 @@
     font-size: 18px;
     font-weight: 600;
     margin: 30px;
-    color: #DD6B21;
+    color: #dd6b21;
 }
-
 
 .link:hover {
     text-decoration: underline;
 }
-
