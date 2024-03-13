@@ -5,13 +5,11 @@ import FilterByCategory from '../FilterByCategory/FilterByCategory';
 import FilterByModel from '../FilterByModel/FilterByModel';
 import styles from './SideFilter.module.css';
 
-const SideFilter: React.FC<SideFilterProps> = ({ onChoseCategory, chosenCategory, loadedDevices, filterByCategory, filteredByCategory, onModelChangeHandler }) => {
+const SideFilter: React.FC<SideFilterProps> = ({ onChoseCategory, chosenCategory, loadedDevices, filteredByCategory, onModelChangeHandler }) => {
     const [activeBtnTitle, setActiveBtnTitle] = useState('All');
     const [selectedModels, setSelectedModels] = useState<string[]>([]);
 
     const onClickHandler = (title: string) => {
-        filterByCategory(title, loadedDevices);
-
         setSelectedModels([]);
         
         const categoryCheck = (title: string) => {
