@@ -1,13 +1,9 @@
 import {
-    Alert,
-    AlertIcon,
-    Box,
     Button,
     ButtonGroup,
     Input,
     InputGroup,
     InputLeftElement,
-    ring,
 } from '@chakra-ui/react';
 import validateInput from '../../validation/validation';
 import { FaPhoneAlt } from 'react-icons/fa';
@@ -25,7 +21,7 @@ interface Props {
 }
 
 const CartOrderForm = ({ onBack, onSend }: Props) => {
-    const { cartItems, clearCart, isOpen, onClose } = useContext(CartContext);
+    const { cartItems, clearCart, onClose } = useContext(CartContext);
 
     const [enteredName, setEnteredName] = useState('');
     const [enteredEmail, setEnteredEmail] = useState('');
@@ -96,6 +92,7 @@ const CartOrderForm = ({ onBack, onSend }: Props) => {
 
     const inputs = [
         {
+            id: 'name',
             type: 'text',
             placeholder: 'Name',
             icon: <CgRename />,
@@ -105,6 +102,7 @@ const CartOrderForm = ({ onBack, onSend }: Props) => {
             errorMessage: nameErrorMessage,
         },
         {
+            id: 'email',
             type: 'email',
             placeholder: 'Email',
             icon: <SiMinutemailer />,
@@ -114,6 +112,7 @@ const CartOrderForm = ({ onBack, onSend }: Props) => {
             errorMessage: emailErrorMessage,
         },
         {
+            id: 'phone',
             type: 'tel',
             placeholder: 'Phone number',
             icon: <FaPhoneAlt />,
@@ -123,6 +122,7 @@ const CartOrderForm = ({ onBack, onSend }: Props) => {
             errorMessage: phoneErrorMessage,
         },
         {
+            id: 'address',
             type: 'text',
             placeholder: 'Address',
             icon: <IoIosHome />,
@@ -135,9 +135,9 @@ const CartOrderForm = ({ onBack, onSend }: Props) => {
 
     return (
         <form className={styles.form} onSubmit={onSubmitFormHandler}>
-            {inputs.map((input, index) => {
+            {inputs.map((input) => {
                 return (
-                    <InputGroup key={index} className={styles.inputContainer}>
+                    <InputGroup key={input.id} className={styles.inputContainer}>
                         <InputLeftElement pointerEvents="none">{input.icon}</InputLeftElement>
                         <Input
                             type={input.type}

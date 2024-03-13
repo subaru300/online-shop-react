@@ -8,7 +8,6 @@ import styles from './SideFilter.module.css';
 const SideFilter: React.FC<SideFilterProps> = ({
     onChoseCategory,
     chosenCategory,
-    loadedDevices,
     filteredByCategory,
     onModelChangeHandler,
 }) => {
@@ -20,7 +19,8 @@ const SideFilter: React.FC<SideFilterProps> = ({
 
         const categoryCheck = (title: string) => {
             if (title === 'All') return title;
-            else return title.split(' ')[1];
+
+            return title.split(' ')[1];
         };
         const checkedCategory = categoryCheck(title);
 

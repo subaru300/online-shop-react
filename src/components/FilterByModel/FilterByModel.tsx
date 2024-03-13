@@ -22,7 +22,7 @@ const FilterByModel = ({ filteredByCategory, onModelChangeHandler, selectedModel
 
     useEffect(() => {
         onModelChangeHandler(selectedModels);
-    }, [selectedModels]);
+    }, [selectedModels, onModelChangeHandler]);
 
     return (
         <div>

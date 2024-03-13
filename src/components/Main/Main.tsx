@@ -57,12 +57,12 @@ const Main = () => {
     useEffect(() => {
         if (cartItems.length === 0) return;
         toast({
-            title: `Your Cart was changed`,
+            title: 'Your Cart was changed',
             status: 'info',
             duration: 1000,
             isClosable: true,
         });
-    }, [cartItems]);
+    }, [cartItems, toast]);
 
     return (
         <Box className={styles.container}>
@@ -70,7 +70,6 @@ const Main = () => {
                 <SideFilter
                     onChoseCategory={setChosenCategory}
                     chosenCategory={chosenCategory}
-                    loadedDevices={loadedDevices}
                     filteredByCategory={filteredByCategory}
                     onModelChangeHandler={onModelChangeHandler}
                 />

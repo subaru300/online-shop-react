@@ -5,8 +5,6 @@ const validateInput = (
     isAddressInput: boolean,
     wasTouched: boolean
 ) => {
-    let isValid: boolean;
-    let isInvalid: boolean;
     let errorText: string;
     let regexPattern: RegExp;
 
@@ -26,8 +24,8 @@ const validateInput = (
         errorText = `Enter your name (max ${maxCharacters} characters)`;
     }
 
-    isValid = regexPattern.test(inputValue) && inputValue.length <= maxCharacters;
-    isInvalid = (!isValid && inputValue.trim() !== '') || (wasTouched && inputValue.trim() === '');
+    const isValid = regexPattern.test(inputValue) && inputValue.length <= maxCharacters;
+    const isInvalid = (!isValid && inputValue.trim() !== '') || (wasTouched && inputValue.trim() === '');
 
     return {
         isValid,
