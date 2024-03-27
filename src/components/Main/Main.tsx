@@ -1,23 +1,23 @@
-import { useContext, useEffect, useState, useMemo } from 'react';
-import { Box, Divider, useToast } from '@chakra-ui/react';
-import { CartContext } from '../cart/CartContext';
+import { useEffect, useState, useMemo } from 'react';
+import { Box, Divider } from '@chakra-ui/react';
 import SpinnerComp from '../Spinner/SpinnerComp';
 import DeviceList from '../DeviceList/DeviceList';
 import SideFilter from '../SideFilter/SideFilter';
-import { LoadedDevice } from '../../interfaces/interfaces';
-import fetchData from '../../api/fetchData';
 import styles from './Main.module.css';
+import { loadedDevicesStore } from '../../store';
+import { observer } from 'mobx-react';
 
-const Main = () => {
-    const [loadedDevices, setLoadedDevices] = useState<LoadedDevice[]>([]);
-
+const Main = observer(() => {
+    const loadedDevices = loadedDevicesStore.loadedDevices;
+    const isLoading = loadedDevicesStore.isLoading;
+    const error = loadedDevicesStore.error;
+    
     const [chosenCategory, setChosenCategory] = useState<string>('All');
     const [chosenModels, setChosenModels] = useState<string[]>([]);
-    const { cartItems } = useContext(CartContext);
-    const toast = useToast();
 
     const filteredByCategory = useMemo(() => {
         if (chosenCategory === 'All') {
+            setChosenModels([]);
             return loadedDevices;
         }
 
@@ -39,30 +39,12 @@ const Main = () => {
     }
 
     useEffect(() => {
-        const loadData = async () => {
-            try {
-                const devicesData = await fetchData();
-                setLoadedDevices(devicesData);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-        loadData();
-    }, []);
+        loadedDevicesStore.loadDevices();
+    }, [])
 
     const onModelChangeHandler = (selectedModels: string[]) => {
         setChosenModels(selectedModels);
     };
-
-    useEffect(() => {
-        if (cartItems.length === 0) return;
-        toast({
-            title: 'Your Cart was changed',
-            status: 'info',
-            duration: 1000,
-            isClosable: true,
-        });
-    }, [cartItems, toast]);
 
     return (
         <Box className={styles.container}>
@@ -76,17 +58,15 @@ const Main = () => {
             </Box>
             <Divider orientation="vertical" />
 
-            {finalDevices.length === 0 ? (
-                <Box className={styles.page}>
-                    <SpinnerComp />
-                </Box>
-            ) : (
-                <Box className={styles.page}>
-                    <DeviceList devices={finalDevices} />
-                </Box>
-            )}
+            {error && <Box className={styles.error}>{error}</Box>   }
+            {isLoading &&  <Box className={styles.page}>
+                                <SpinnerComp />
+                           </Box>}
+            {!isLoading && <Box className={styles.page}>
+                <DeviceList devices={finalDevices} />
+            </Box>}
         </Box>
     );
-};
+});
 
 export default Main;

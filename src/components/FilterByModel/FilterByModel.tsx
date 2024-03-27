@@ -1,6 +1,7 @@
 import { Card, Checkbox } from '@chakra-ui/react';
 import { LoadedDevice } from '../../interfaces/interfaces';
 import { useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import styles from './FilterByModel.module.css';
 
 interface Props {
@@ -24,20 +25,26 @@ const FilterByModel = ({ filteredByCategory, onModelChangeHandler, selectedModel
         onModelChangeHandler(selectedModels);
     }, [selectedModels, onModelChangeHandler]);
 
+    const createUniqueModels = (allModels: LoadedDevice[]) => {
+        return Array.from(new Set(allModels.map((model) => model.name)));
+    };
+
+    const uniqueModels = createUniqueModels(filteredByCategory);
+
     return (
         <div>
             <h4 className={styles.header}>Model</h4>
             <Card className={styles.filterCard}>
                 <div className={styles.wrapper}>
-                    {filteredByCategory.map((device) => {
+                    {uniqueModels.map((device) => {
                         return (
                             <Checkbox
-                                key={device.name}
+                                key={uuidv4()}
                                 colorScheme="orange"
-                                isChecked={selectedModels.includes(device.name)}
-                                onChange={(e) => checkboxChangeHandler(e, device.name)}
+                                isChecked={selectedModels.includes(device)}
+                                onChange={(e) => checkboxChangeHandler(e, device)}
                             >
-                                <span className={styles.checkbox}>{device.name}</span>
+                                <span className={styles.checkbox}>{device}</span>
                             </Checkbox>
                         );
                     })}

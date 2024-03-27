@@ -8,12 +8,7 @@ const DeviceList = ({ devices }: { devices: LoadedDevice[] }) => {
                 return (
                     <CardDevice
                         key={device.id}
-                        id={device.id}
-                        name={device.name}
-                        imageLink={device.imageLink}
-                        description={device.description}
-                        price={device.price}
-                        quantity={device.quantity}
+                        {...device}
                     />
                 );
             })}

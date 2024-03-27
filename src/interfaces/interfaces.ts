@@ -5,6 +5,10 @@ export interface LoadedDevice {
     price: number;
     id: string;
     quantity: number;
+    display: string;
+    cpu: string;
+    ram: string;
+    rom: string;
 }
 
 export interface CartContextType {

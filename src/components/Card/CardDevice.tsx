@@ -9,16 +9,20 @@ import {
     Card,
     CardBody,
     CardFooter,
+    useToast,
 } from '@chakra-ui/react';
 import { useContext, useState } from 'react';
 import { CartContext } from '../cart/CartContext';
 import BuyNowModal from '../BuyNowModal/BuyNowModal';
 import { LoadedDevice } from '../../interfaces/interfaces';
 import styles from './CardDevice.module.css';
+import { Link } from 'react-router-dom';
 
-const CardDevice = ({ name, imageLink, description, price, id, quantity }: LoadedDevice) => {
+const CardDevice = ({ name, imageLink, description, price, id, quantity, cpu, ram, display, rom }: LoadedDevice) => {
     const [selectedDevice, setSelectedDevice] = useState('');
     const { addToCart } = useContext(CartContext);
+
+    const toast = useToast();
 
     // open Buy Now dialog
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -28,10 +32,21 @@ const CardDevice = ({ name, imageLink, description, price, id, quantity }: Loade
         setSelectedDevice(name);
     };
 
+    const onCartAddHandler = () => {
+        addToCart({ name, imageLink, description, price, id, quantity, cpu, ram, display, rom });
+        toast({
+          title: 'Your Cart was changed',
+          status: 'info',
+          duration: 1000,
+          isClosable: true,
+      });
+      };
+
     return (
         <div className={styles.cardContainer}>
             {isOpen && <BuyNowModal isOpen={isOpen} onClose={onClose} productName={selectedDevice} />}
             <Card boxShadow="xs" maxW="sm" className={styles.card}>
+            <Link to={`/${name}/details`}>
                 <CardBody className={styles.cardBody}>
                     <div className={styles.imgContainer}>
                         <Image className={styles.image} src={imageLink} alt="photo" borderRadius="md" />
@@ -55,6 +70,7 @@ const CardDevice = ({ name, imageLink, description, price, id, quantity }: Loade
                         </Text>
                     </Stack>
                 </CardBody>
+                </Link>
                 <Divider />
                 <CardFooter>
                     <ButtonGroup className={styles.btnsContainer}>
@@ -65,7 +81,7 @@ const CardDevice = ({ name, imageLink, description, price, id, quantity }: Loade
                             className={styles.addBtn}
                             variant="ghost"
                             colorScheme="blue"
-                            onClick={() => addToCart({ name, imageLink, description, price, id, quantity })}
+                            onClick={onCartAddHandler}
                         >
                             Add to cart
                         </Button>

@@ -19,6 +19,12 @@
     gap: 10px;
 }
 
+.error {
+    color: rgb(227, 69, 69);
+    font-size: 24px;
+    margin: 100px;
+}
+
 @media screen and (max-width: 1600px) {
     .page {
         grid-template-columns: repeat(4, 1fr);
