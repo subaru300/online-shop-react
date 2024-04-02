@@ -29,4 +29,8 @@
     .list {
         display: none;
     }
+
+    .footerList {
+        display: flex;
+}
 }

@@ -20,7 +20,7 @@ const Header = () => {
                     {' '}
                     <img src={logo} className={styles.logo} />
                 </Link>
-                <Menu />
+                <Menu isFooter={false}/>
                 <div className={styles.cartAndSwitchContainer}>
                     <CartButton onClick={() => onOpen()} />
                     <ColorModeSwitcher className={styles.switcher} />

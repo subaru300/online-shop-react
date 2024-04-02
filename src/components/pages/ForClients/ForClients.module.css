@@ -1,0 +1,14 @@
+.text {
+    margin: 50px 0;
+    font-size: 18px;
+}
+
+.backLink {
+    color: #38B2AC;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.backLink:hover {
+    text-decoration: underline;
+}

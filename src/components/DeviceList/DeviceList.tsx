@@ -1,7 +1,9 @@
 import CardDevice from '../Card/CardDevice';
 import { LoadedDevice } from '../../interfaces/interfaces';
+import ScrollToTopButton from '../ScrollToTopButton/ScrollToTopButton';
 
 const DeviceList = ({ devices }: { devices: LoadedDevice[] }) => {
+
     return (
         <>
             {devices.map((device) => {
@@ -12,6 +14,7 @@ const DeviceList = ({ devices }: { devices: LoadedDevice[] }) => {
                     />
                 );
             })}
+              <ScrollToTopButton />
         </>
     );
 };

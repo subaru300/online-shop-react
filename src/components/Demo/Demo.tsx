@@ -18,7 +18,7 @@ const Demo = ({ productName, tagline, image, colors }: Props) => {
             <div className={styles.textContainer} style={{ color: `${colors.color}` }}>
                 <h2>{productName}</h2>
                 <p>{tagline}</p>
-                <Link to="" className={styles.demoLink}>
+                <Link to="/catalogue" className={styles.demoLink}>
                     Open in catalogue
                 </Link>
             </div>

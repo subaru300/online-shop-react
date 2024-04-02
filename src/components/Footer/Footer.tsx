@@ -9,7 +9,7 @@ const Footer = () => {
             <div>
                 <div className={styles.footerContainer}>
                     <p className={styles.tel}>Tel. +555 555 55</p>
-                    <Menu />
+                    <Menu isFooter={true}/>
                 </div>
             </div>
         </Box>
