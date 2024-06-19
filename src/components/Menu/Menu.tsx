@@ -9,11 +9,21 @@ const Menu = ({ isFooter }: Props) => {
     return (
         <div>
             <ul className={`${styles.list} ${isFooter ? styles.footerList : ''}`}>
-                <Link to={'/clients'}><li>For clients</li></Link>
-                <Link to={'/partners'}><li>For partners</li></Link>
-                <Link to={'/sale'}><li>Sale</li></Link>
-                <Link to={'/news'}><li>News</li></Link>
-                <Link to={'/contacts'}><li>Contacts</li></Link>
+                <li>
+                    <Link to={'/clients'}>For clients</Link>
+                </li>
+                <li>
+                    <Link to={'/partners'}>For partners</Link>
+                </li>
+                <li>
+                    <Link to={'/sale'}>Sale</Link>
+                </li>
+                <li>
+                    <Link to={'/news'}>News</Link>
+                </li>
+                <li>
+                    <Link to={'/contacts'}>Contacts</Link>
+                </li>
             </ul>
         </div>
     );
